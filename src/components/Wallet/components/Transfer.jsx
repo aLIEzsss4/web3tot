@@ -95,12 +95,14 @@ function Transfer() {
       .on("transactionHash", (hash) => {
         openNotification({
           message: "🔊 New Transaction",
-          description: `${hash}`,
+          description:(
+            <a href={`https://testnet.bscscan.com/tx/${hash}`}  target="_blank" rel="noreferrer">{hash}</a>
+          ),
         });
         console.log("🔊 New Transaction", hash);
       })
       .on("receipt", (receipt) => {
-        openNotification({
+        openNotification['success']({
           message: "📃 New Receipt",
           description: `${receipt.transactionHash}`,
         });

@@ -9,14 +9,15 @@ export default function AssetSelector({ setAsset, style }) {
   const { Moralis } = useMoralis();
 
   const fullBalance = useMemo(() => {
-    if (!assets || !nativeBalance) return null;
+    if (!assets || !nativeBalance ) return null;
+    console.log(assets, nativeBalance, nativeToken)
     return [
       ...assets,
       {
         balance: nativeBalance.balance,
-        decimals: nativeToken.decimals,
-        name: nativeToken.name,
-        symbol: nativeToken.symbol,
+        decimals: nativeToken?.decimals||18,
+        name: nativeToken?.name||'BNB',
+        symbol: nativeToken?.symbol||'BNB',
         token_address: "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
       },
     ];
