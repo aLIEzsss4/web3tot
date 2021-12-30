@@ -1,49 +1,57 @@
 import { useLocation } from "react-router";
 import { Menu } from "antd";
 import { NavLink } from "react-router-dom";
-function MenuItems() {
-  const { pathname } = useLocation();
+
+import { useAppDispatch, useAppSelector } from '../game/hooks'
+import { setOpen as openMarket } from 'stores/NFTMarketStore'
+import { openCreatNft } from 'stores/CreatNFTStore'
+import { setOpen as openNFTBalance } from 'stores/NFTBalanceStore'
+import { setOpen as setOpenBalance } from 'stores/BanlanceStore'
+import { setOpen as setOpenNFTTrans } from 'stores/NFTTransStore'
+import { setOpen as setOpenMintCom } from 'stores/MintStore'
+
+
+function MenuItems({ collapsed, ISTESTNET }) {
+  const dispatch = useAppDispatch()
 
   return (
     <Menu
       theme="light"
-      mode="horizontal"
-      style={{
-        display: "flex",
-        fontSize: "17px",
-        fontWeight: "500",
-        width: "100%",
-        justifyContent: "center",
-      }}
-      defaultSelectedKeys={[pathname]}
+      mode="inline"
     >
-      <Menu.Item key="/" >
-        <NavLink to="/">🚀 Main</NavLink>
-      </Menu.Item>
-      {/* <Menu.Item key="/wallet">
-        <NavLink to="/wallet">👛 Wallet</NavLink>
-      </Menu.Item> */}
-      <Menu.Item key="/mint">
-        <NavLink to="/mint" style={{ color: 'red' }}>💵  Mint(new)</NavLink>
-      </Menu.Item>
-
+      
+      {/* {
+        ISTESTNET&&(
+          <Menu.Item key="/mint" onClick={() => dispatch(setOpenMintCom(true))}>
+            <span>💵 Mint</span>
+          </Menu.Item>
+        )
+      }
+     
       <Menu.Item key="/erc20balance">
-        <NavLink to="/erc20balance">💰 Balances</NavLink>
+        <span onClick={() => dispatch(setOpenBalance(true))}>💰 Balances</span>
+      </Menu.Item> */}
+      <Menu.Item key="/NFTMarketPlace" onClick={() => dispatch(openMarket(true))}>
+        <span >{'🏦 NFT MarketPlace'}</span>
+
+        {/* <NavLink to="/NFTMarketPlace">{collapsed ? 'Market' : '🏦 NFT MarketPlace'}</NavLink> */}
       </Menu.Item>
-      <Menu.Item key="/NFTMarketPlace">
-        <NavLink to="/NFTMarketPlace">🏦 NFT MarketPlace</NavLink>
+      <Menu.Item key="/NftTransactions" onClick={() => dispatch(setOpenNFTTrans(true))}>
+        {/* <NavLink to="/NftTransactions">💵 NftTransactions</NavLink> */}
+        <span > 🏷 NFT Transactions</span>
+
       </Menu.Item>
-      <Menu.Item key="/NftTransactions">
-        <NavLink to="/NftTransactions">💵 NftTransactions</NavLink>
-      </Menu.Item>
-      <Menu.Item key="/nftBalance">
-        <NavLink to="/nftBalance">💸 NFT Balance</NavLink>
+      <Menu.Item key="/nftBalance" onClick={() => dispatch(openNFTBalance(true))}>
+        {/* <NavLink to="/nftBalance">💸 NFT Balance</NavLink> */}
+        <span >💸 NFT Balance</span>
       </Menu.Item>
       {/* <Menu.Item key="/nftBalance">
         <NavLink to="/nftBalance">🖼 NFTs</NavLink>
       </Menu.Item> */}
-      <Menu.Item key="/nftCreat">
-        <NavLink to="/nftCreat">🖼Creat NFT</NavLink>
+      <Menu.Item key="/nftCreat" onClick={() => dispatch(openCreatNft(true))}>
+        {/* <NavLink to="/nftCreat">🖼 Creat NFT</NavLink> */}
+        <span >🖼 Creat NFT</span>
+
       </Menu.Item>
 
     </Menu>

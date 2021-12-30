@@ -1,10 +1,33 @@
+const local = process.env.REACT_APP_LOCALTEST === 'TRUE';
+console.log('process.env',
+  process.env, local)
+
 export const networkCollections = {
-  "0x61 ": [
-    //Add Your Collections here
+  "0x61": [
+    //Smart Chain - Testnet
     {
       image: "https://lh3.googleusercontent.com/BWCni9INm--eqCK800BbRkL10zGyflxfPwTHt4XphMSWG3XZvPx1JyGdfU9vSor8K046DJg-Q8Y4ioUlWHiCZqgR_L00w4vcbA-w=s0",
       name: "NFTOT",
-      addrs: "0xec21e81117bd09eb3ee2f6d7c2aca80f017eb7cf",
+      nftAddrs: local ? "0x975404f84305aFF41C29B60f71ae29066Ccfc592" : "0x90dEE6E7C740376bB0320c026F006F8701ECDE13",
+      markAddrs: local ? "0x458a45D0b526a7B70704e1064F4CDa2d525B87f8" : "0x0Fe264929a9A2010A987856fE254a2628054dA0f",
+      ItemImagesList: 'ItemImages',
+      MarketItemsList: 'MarketItems'
+    },
+    // {
+    //   image: "https://ipfs.moralis.io:2053/ipfs/QmfLbpeVHxReWKNLaXTPcWiafi49eoAL4gRwMGuXtx2Eqe/images/14.png",
+    //   name: "Pixel Show",
+    //   addrs: "0xCA34404dD8Bd6537BE76F3A51B379F8949bD7973",
+    // },
+  ],
+  "0x38": [
+    //Smart Chain
+    {
+      image: "https://lh3.googleusercontent.com/BWCni9INm--eqCK800BbRkL10zGyflxfPwTHt4XphMSWG3XZvPx1JyGdfU9vSor8K046DJg-Q8Y4ioUlWHiCZqgR_L00w4vcbA-w=s0",
+      name: "NFTOT",
+      nftAddrs: "0xd0267Ad5425F5A99Fd6614a789AA4EC98a771811",
+      markAddrs: "0x804389f405A254eCC180CC183C6c98701195A0bC",
+      ItemImagesList: 'ItemImages',
+      MarketItemsList: 'MarketItems'
     },
     // {
     //   image: "https://ipfs.moralis.io:2053/ipfs/QmfLbpeVHxReWKNLaXTPcWiafi49eoAL4gRwMGuXtx2Eqe/images/14.png",
@@ -13,19 +36,23 @@ export const networkCollections = {
     // },
   ],
   "0x13881": [
-    //Add Your Collections here
+
+    //mumbai
     {
       image:
         "https://lh3.googleusercontent.com/BWCni9INm--eqCK800BbRkL10zGyflxfPwTHt4XphMSWG3XZvPx1JyGdfU9vSor8K046DJg-Q8Y4ioUlWHiCZqgR_L00w4vcbA-w=s0",
-      name: "Test Mages",
-      addrs: "0x275d553f426355c20b134D944B5b28D31CDb83DA",
+      name: "NFTOT",
+      nftAddrs: '0x9c0348d6df8f63429f192f810e19e4c3a7b9ee8c',
+      markAddrs: '0x094Db927d895f448a478d753898618534A0cD787',
+      ItemImagesList: 'MumbaiItemImages',
+      MarketItemsList: 'MumbaiMarketItems'
     },
-    {
-      image:
-        "https://ipfs.moralis.io:2053/ipfs/QmfLbpeVHxReWKNLaXTPcWiafi49eoAL4gRwMGuXtx2Eqe/images/14.png",
-      name: "Pixel Show",
-      addrs: "0xCA34404dD8Bd6537BE76F3A51B379F8949bD7973",
-    },
+    // {
+    //   image:
+    //     "https://ipfs.moralis.io:2053/ipfs/QmfLbpeVHxReWKNLaXTPcWiafi49eoAL4gRwMGuXtx2Eqe/images/14.png",
+    //   name: "Pixel Show",
+    //   addrs: "0xCA34404dD8Bd6537BE76F3A51B379F8949bD7973",
+    // },
   ],
 
   "0x1": [
@@ -81,3 +108,5 @@ export const networkCollections = {
 };
 
 export const getCollectionsByChain = (chain) => networkCollections[chain];
+
+

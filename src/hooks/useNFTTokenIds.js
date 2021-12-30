@@ -19,7 +19,7 @@ export const useNFTTokenIds = (addr) => {
   } = useMoralisWeb3ApiCall(token.getAllTokenIds, {
     chain: chainId,
     address: addr,
-    limit: 10,
+    limit: 100,
   });
 
 
@@ -29,8 +29,7 @@ export const useNFTTokenIds = (addr) => {
       setTotalNFTs(data.total);
       setFetchSuccess(true);
       for (let NFT of NFTs) {
-        if (NFT.metadata) {
-          console.log(NFT)
+        if (NFT.metadata && typeof NFT.metadata=='string') {
           NFT.metadata = JSON.parse(NFT.metadata);
           NFT.image =resolveLink(NFT.metadata?.image);
           NFT._name = NFT.metadata?.name;
@@ -38,11 +37,12 @@ export const useNFTTokenIds = (addr) => {
           NFT.rate = NFT.metadata?.rate;
         } else if (NFT?.token_uri) {
           try {
-            await fetch(NFT.token_uri)
-              .then((response) => response.json())
-              .then((data) => {
-                NFT.image = data.image
-              });
+            NFT.image = resolveLink(NFT.token_uri)
+            // await fetch(NFT.token_uri)
+            //   // .then((response) => response.json())
+            //   .then((data) => {
+            //     NFT.image = data
+            //   });
           } catch (error) {
             setFetchSuccess(false);
           }

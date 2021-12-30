@@ -4,7 +4,8 @@ import { getEllipsisTxt } from "../../helpers/formatters";
 import Blockie from "../Blockie";
 import "./identicon.css";
 import { useMoralis } from "react-moralis";
-import { Skeleton } from "antd";
+import { Skeleton, Typography } from "antd";
+const { Paragraph } = Typography;
 
 const styles = {
   address: {
@@ -41,7 +42,7 @@ function Address(props) {
       strokeLinejoin="round"
       style={{ cursor: "pointer" }}
       onClick={() => {
-        navigator.clipboard.writeText(address);
+        navigator?.clipboard?.writeText(address);
         setIsClicked(true);
       }}
     >
@@ -56,9 +57,10 @@ function Address(props) {
   return (
     <div style={{ ...styles.address, ...props.style }}>
       {props.avatar === "left" && <Blockie address={address} size={7} />}
-      <p>{props.size ? getEllipsisTxt(address, props.size) : address}</p>
+      {/* <p>{props.size ? getEllipsisTxt(address, props.size) : address}</p> */}
+      <Paragraph copyable={{ text: address}}>{props.size ?getEllipsisTxt(address, props.size) : address}</Paragraph>
       {props.avatar === "right" && <Blockie address={address} size={7} />}
-      {props.copyable && (isClicked ? <Check /> : <Copy />)}
+      {/* {props.copyable && (isClicked ? <Check /> : <Copy />)} */}
     </div>
   );
 }

@@ -29,6 +29,10 @@ export default function QuickStart({ isServerInfo }) {
   function handleClick() {
     history.push("/mint");
   }
+
+  return (<div>
+    
+  </div>)
   return (
     <div style={{ display: "flex", gap: "10px" }}>
       <Card

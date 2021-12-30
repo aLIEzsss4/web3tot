@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Menu, Dropdown, Button } from "antd";
 import { DownOutlined } from "@ant-design/icons";
-import {  BSCLogo} from "./Logos";
-import { useChain } from "react-moralis";
+import { BSCLogo, PolygonLogo, ETHLogo } from "./Logos";
+import { useChain, useMoralis } from "react-moralis";
+
 
 const styles = {
   item: {
@@ -20,19 +21,49 @@ const styles = {
   },
 };
 
-const menuItems=[
+const chainMap = {
+  'MAINNET': [
+    {
+      key: "0x38",
+      value: "Smart Chain",
+      icon: <BSCLogo />,
+    },
   {
-    key: "0x61",
-    value: "Smart Chain Testnet",
-    icon: <BSCLogo />,
+    key: "0x89",
+    value: "Polygon",
+    icon: <PolygonLogo />,
   },
-]
+  ],
+  'TESTNET': [
+    {
+      key: "0x4",
+      value: "Rinkeby Testnet",
+      icon: <ETHLogo />,
+    },
+    {
+      key: "0x61",
+      value: "Smart Chain Testnet",
+      icon: <BSCLogo />,
+    },
+  {
+    key: "0x13881",
+    value: "Mumbai",
+    icon: <PolygonLogo />,
+  },]
+}[process.env.REACT_APP_WORKNET]
+console.log(process.env.REACT_APP_WORKNET,'REACT_APP_WORKNET')
+
+const menuItems = chainMap
+
 
 
 
 function Chains() {
-  const { switchNetwork, chainId,  } = useChain();
+
+  const { switchNetwork, chainId, } = useChain();
   const [selected, setSelected] = useState({});
+  const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading, account, Moralis } = useMoralis();
+
 
   // console.log("chain", chain)
 
@@ -43,9 +74,24 @@ function Chains() {
     console.log("current chainId: ", chainId);
   }, [chainId]);
 
+  useEffect(() => {
+    if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isAuthenticated, isWeb3Enabled]);
+
   const handleMenuClick = (e) => {
     console.log("switch to: ", e.key);
-    switchNetwork(e.key);
+
+    if (isAuthenticated || isWeb3Enabled) {
+      console.log(isAuthenticated, isWeb3Enabled)
+
+      switchNetwork(e.key);
+    } else {
+      console.log(isAuthenticated, isWeb3Enabled)
+
+    }
+
+
   };
 
   const menu = (
@@ -60,9 +106,9 @@ function Chains() {
 
   return (
     <div>
-      <Dropdown overlay={menu} trigger={["click"]}>
+      <Dropdown overlay={menu} trigger={["click"]} placement="bottomCenter">
         <Button key={selected?.key} icon={selected?.icon} style={{ ...styles.button, ...styles.item }}>
-          <span style={{ marginLeft: "5px" }}>{selected?.value}</span>
+          <span style={{ marginLeft: "5px", color: '#1890ff' }}>{selected?.value || 'Select Network'}</span>
           <DownOutlined />
         </Button>
       </Dropdown>

@@ -3,6 +3,7 @@ import { Skeleton, Table } from "antd";
 import { getEllipsisTxt } from "../helpers/formatters";
 const styles = {
   title: {
+    color:'#fff',
     fontSize: "30px",
     fontWeight: "700",
   },

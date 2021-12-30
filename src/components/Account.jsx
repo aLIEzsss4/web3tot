@@ -28,7 +28,7 @@ function Account() {
   const { authenticate, isAuthenticated, logout, account, chainId } = useMoralis();
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  if (!isAuthenticated) {
+  if (!isAuthenticated || !account) {
     return (
       <div style={styles.account} onClick={() => authenticate({ signingMessage: "i am hooks" })}>
         <p style={styles.text}>Login in</p>

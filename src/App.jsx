@@ -1,25 +1,29 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
-import { BrowserRouter as Router, Switch, Route, HashRouter } from "react-router-dom";
+// import { BrowserRouter as Router, Switch, Route, HashRouter } from "react-router-dom";
 import Account from "components/Account";
 import Chains from "components/Chains";
-import ERC20Balance from "components/ERC20Balance";
-import ERC20Transfers from "components/ERC20Transfers";
-import NFTBalance from "components/NFTBalance2";
-import Wallet from "components/Wallet";
-import Mint from "components/Mint";
+// import ERC20Balance from "components/ERC20Balance";
+// import ERC20Transfers from "components/ERC20Transfers";
+// import NFTBalance from "components/NFTBalance2";
+// import Wallet from "components/Wallet";
+// import Mint from "components/Mint";
 import { Layout } from "antd";
 import "antd/dist/antd.css";
 import NativeBalance from "components/NativeBalance";
 import "./style.css";
 import MenuItems from "./components/MenuItems";
-import Main from "./components/Main"
+// import Main from "./components/Main"
 import AddNetwork from "components/AddBscTest";
-import CreatNFT from "components/NFT/CreatNFT"
-import NFTTokenIds from "components/NFTTokenIds"
-import NFTMarketTransactions from "components/NFTMarketTransactions"
+// import CreatNFT from "components/NFT/CreatNFT"
+// import NFTTokenIds from "components/NFTTokenIds"
+// import NFTMarketTransactions from "components/NFTMarketTransactions"
+// import './game/PhaserGame'
+import { getFaucetByChain, getNativeByChain} from 'helpers/networks'
+import GameRef from './GameRef.jsx'
 
-const { Header } = Layout;
+
+const { Sider } = Layout;
 
 const styles = {
   content: {
@@ -51,75 +55,78 @@ const styles = {
     fontWeight: "600",
   },
 };
-const App = ({ isServerInfo }) => {
-  const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } = useMoralis();
+const App = ({ isServerInfo, REACT_APP_WORKNET }) => {
+  const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading, account, chainId } = useMoralis();
+  // const { authenticate, isAuthenticated, logout, account, chainId } = useMoralis();
 
   useEffect(() => {
     if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated, isWeb3Enabled]);
 
+  const ISTESTNET = REACT_APP_WORKNET === 'TESTNET'
+
+
+  const [collapsed, setCollapsed] = useState(false);
+
+  
+  const faucetUrl= getFaucetByChain(chainId)
+  const currencySymbol = getNativeByChain(chainId)
   return (
-    <Layout style={{ height: "100vh", overflow: "auto" }}>
-      <HashRouter>
-        <Header style={styles.header}>
-          <Logo />
-          <MenuItems />
-          <div style={styles.headerRight}>
-            <Chains />
-            {/* <AddNetwork /> */}
-            <NativeBalance />
-            <Account />
-          </div>
-        </Header>
+    // <Router>
+    <Layout style={{ height: "0", overflow: "auto" }} className="site-layout">
+      <Sider
+        theme="light"
+        style={{
+          overflow: 'auto',
+          height: '100vh',
+          position: 'fixed',
+          left: 0,
+          background: '#fff'
+        }}
+        collapsible collapsed={collapsed}
+        onCollapse={(flag) => setCollapsed(flag)}
+        collapsedWidth={80}
+      >
+        <Logo />
+        {account && <MenuItems ISTESTNET={ISTESTNET} collapsed={collapsed} />}
+        {/* {!account && !collapsed && ISTESTNET && <AddNetwork />} */}
+        {!collapsed &&
+          (
+            <div
+              style={{
+                display: "grid",
+                gridRowGap: "20px",
+                fontSize: "17px",
+                fontWeight: "500",
+                marginTop: 20,
+                width: "100%",
+                justifyItems: "center",
+              }}
+            >
+              <Chains />  
+              <Account />
+            <NativeBalance chainId={chainId}/>
+              {
+              ISTESTNET && <a href={faucetUrl} target="_blank" rel="noreferrer">Get Free {currencySymbol}</a>
+              }
 
-        <div style={styles.content}>
-          <Switch>
-            <Route exact path="/">
-              <Main />
-            </Route>
-            <Route  path="/wallet">
-              <Wallet />
-            </Route>
-            <Route  path="/mint">
-              <Mint />
-            </Route>
-
-            
-            <Route path="/erc20balance">
-              <ERC20Balance />
-            </Route>
-           
-            <Route path="/erc20transfers">
-              <ERC20Transfers />
-            </Route>
-            <Route path="/NFTMarketPlace">
-              <NFTTokenIds />
-            </Route>
-            <Route path="/NftTransactions">
-              <NFTMarketTransactions />
-            </Route>
-
-            <Route path="/nftBalance">
-              <NFTBalance />
-            </Route>
-            
-            <Route path="/nftCreat">
-              <CreatNFT />
-            </Route>
-            <Route path="/nonauthenticated">
-              <>Please login using the "Authenticate" button</>
-            </Route>
-          </Switch>
-        </div>
-      </HashRouter>
+            </div>
+          )}
+      </Sider>
+      <GameRef />
 
     </Layout>
+    // </Router>
+
   );
 };
 
 export const Logo = () => (
-  <div style={{ display: "flex" }}>
+  <div style={{
+    height: '32px',
+    margin: '16px',
+  }}>
     <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
       width="60" height="38" viewBox="0 0 959.000000 959.000000"
       preserveAspectRatio="xMidYMid meet">

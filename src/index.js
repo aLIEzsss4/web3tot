@@ -1,12 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import { Provider } from 'react-redux'
+import store from './game/stores'
 import { MoralisProvider } from "react-moralis";
 import "./index.css";
 import QuickStart from "components/QuickStart";
 import {
   MoralisDappProvider
 } from "./MoralisDappProvider/MoralisDappProvider";
+import './console'
+
+
 
 
 /** Get your free Moralis Account https://moralis.io/ */
@@ -14,13 +19,17 @@ import {
 const APP_ID = process.env.REACT_APP_MORALIS_APPLICATION_ID;
 const SERVER_URL = process.env.REACT_APP_MORALIS_SERVER_URL;
 
+const REACT_APP_WORKNET = process.env.REACT_APP_WORKNET
+
 const Application = () => {
   const isServerInfo = APP_ID && SERVER_URL ? true : false;
   if (isServerInfo)
     return (
       <MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
         <MoralisDappProvider >
-          <App isServerInfo />
+          <Provider store={store}>
+            < App isServerInfo REACT_APP_WORKNET={REACT_APP_WORKNET} / >
+          </Provider>
         </MoralisDappProvider>
       </MoralisProvider>
     );

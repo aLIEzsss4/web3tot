@@ -3,28 +3,36 @@ export const networkConfigs = {
     currencySymbol: "ETH",
     blockExplorerUrl: "https://etherscan.io/",
     wrapped: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    logo: 'ETHLogo'
   },
   "0x3": {
     currencySymbol: "ETH",
     blockExplorerUrl: "https://ropsten.etherscan.io/",
+    logo: 'ETHLogo'
   },
   "0x4": {
     currencySymbol: "ETH",
-    blockExplorerUrl: "https://kovan.etherscan.io/",
+    blockExplorerUrl: "https://rinkeby.etherscan.io/",
+    faucet:'https://faucets.chain.link/rinkeby',
+    // blockExplorerUrl: "https://kovan.etherscan.io/",
+    logo: 'ETHLogo'
   },
   "0x2a": {
     currencySymbol: "ETH",
     blockExplorerUrl: "https://rinkeby.etherscan.io/",
+    logo: 'ETHLogo'
   },
   "0x5": {
     currencySymbol: "ETH",
     blockExplorerUrl: "https://goerli.etherscan.io/",
+    logo: 'ETHLogo'
   },
   "0x539": {
     chainName: "Local Chain",
     currencyName: "ETH",
     currencySymbol: "ETH",
     rpcUrl: "http://127.0.0.1:7545",
+    logo: 'ETHLogo'
   },
   "0xa86a": {
     chainId: 43114,
@@ -42,6 +50,7 @@ export const networkConfigs = {
     rpcUrl: "https://bsc-dataseed.binance.org/",
     blockExplorerUrl: "https://bscscan.com/",
     wrapped: "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+    logo: 'BSCLogo'
   },
   "0x61": {
     chainId: 97,
@@ -50,6 +59,8 @@ export const networkConfigs = {
     currencySymbol: "BNB",
     rpcUrl: "https://data-seed-prebsc-1-s1.binance.org:8545/",
     blockExplorerUrl: "https://testnet.bscscan.com/",
+    faucet: 'https://testnet.binance.org/faucet-smart',
+    logo: 'BSCLogo'
   },
   "0x89": {
     chainId: 137,
@@ -59,6 +70,7 @@ export const networkConfigs = {
     rpcUrl: "https://rpc-mainnet.maticvigil.com/",
     blockExplorerUrl: "https://explorer-mainnet.maticvigil.com/",
     wrapped: "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
+    logo: 'PolygonLogo'
   },
   "0x13881": {
     chainId: 80001,
@@ -67,6 +79,9 @@ export const networkConfigs = {
     currencySymbol: "MATIC",
     rpcUrl: "https://rpc-mumbai.matic.today/",
     blockExplorerUrl: "https://mumbai.polygonscan.com/",
+    faucet: 'https://faucet.polygon.technology/',
+    nftView: 'https://testnets.opensea.io/assets/mumbai/',
+    logo: 'PolygonLogo'
   },
 };
 
@@ -79,3 +94,12 @@ export const getExplorer = (chain) => networkConfigs[chain]?.blockExplorerUrl;
 
 export const getWrappedNative = (chain) =>
   networkConfigs[chain]?.wrapped || null;
+
+export const getFaucetByChain= (chain) =>
+  networkConfigs[chain]?.faucet || "";
+
+export const getNftViewByChain = (chain) =>
+    networkConfigs[chain]?.nftView || "";
+
+export const getLogoByChain = (chain) =>
+  networkConfigs[chain]?.logo || "";

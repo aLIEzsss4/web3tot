@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { useMoralis, useMoralisQuery } from "react-moralis";
 import { useMoralisDapp } from "MoralisDappProvider/MoralisDappProvider";
 import { Table, Tag, Space } from "antd";
-import { BSCLogo} from "./Chains/Logos";
+import { BSCLogo, ETHLogo, PolygonLogo} from "./Chains/Logos";
 import moment from "moment";
+import { getCollectionsByChain } from "helpers/collections";
+import { getLogoByChain} from 'helpers/networks'
 
 const styles = {
   table: {
@@ -12,10 +14,22 @@ const styles = {
   },
 };
 
+
 function NFTMarketTransactions() {
-  const { walletAddress } = useMoralisDapp();
+  const { walletAddress, chainId } = useMoralisDapp();
   const { Moralis } = useMoralis();
-  const queryItemImages = useMoralisQuery("ItemImages");
+
+  const logo = {
+    "BSCLogo": <BSCLogo />,
+    "ETHLogo": <ETHLogo />,
+    "": <ETHLogo />,
+    "PolygonLogo": <PolygonLogo />
+  }[getLogoByChain(chainId)]
+
+  const collections = getCollectionsByChain(chainId)
+  const { MarketItemsList, ItemImagesList } = collections?.[0] || { MarketItemsList: '', ItemImagesList: '' }
+
+  const queryItemImages = useMoralisQuery(ItemImagesList);
   const fetchItemImages = JSON.parse(
     JSON.stringify(queryItemImages.data, [
       "nftContract",
@@ -24,7 +38,7 @@ function NFTMarketTransactions() {
       "image",
     ])
   );
-  const queryMarketItems = useMoralisQuery("MarketItems");
+  const queryMarketItems = useMoralisQuery(MarketItemsList);
   const fetchMarketItems = JSON.parse(
     JSON.stringify(queryMarketItems.data, [
       "updatedAt",
@@ -123,13 +137,12 @@ function NFTMarketTransactions() {
       dataIndex: "price",
       render: (e) => (
         <Space size="middle">
-          <BSCLogo/>
+          {logo}
           <span>{e}</span>
         </Space>
       ),
     }
   ];
-
   const data = fetchMarketItems?.map((item, index) => ({
     key: index,
     date: moment(item.updatedAt).format("DD-MM-YYYY HH:mm"),

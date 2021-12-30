@@ -1,13 +1,25 @@
 import React, { useEffect, useState } from "react";
 import { useMoralis } from "react-moralis";
 import MoralisDappContext from "./context";
+import {
+  getCollectionsByChain
+} from 'helpers/collections'
 import abi from 'contracts/NftMarket.json'
 function MoralisDappProvider({ children }) {
   const { web3, Moralis, user } = useMoralis();
   const [walletAddress, setWalletAddress] = useState();
   const [chainId, setChainId] = useState();       
   const [contractABI, setContractABI] = useState(JSON.stringify(abi)); //Smart Contract ABI here
-  const [marketAddress, setMarketAddress] = useState('0x458a45D0b526a7B70704e1064F4CDa2d525B87f8'); //Smart Contract Address Here
+
+  const markAddrs = getCollectionsByChain(chainId)?.[0]?.markAddrs
+  
+  const [marketAddress, setMarketAddress] = useState(markAddrs); //Smart Contract Address Here
+
+  useEffect(() => {
+    const newMarkAddrs = getCollectionsByChain(chainId)?.[0]?.markAddrs;
+
+    setMarketAddress(newMarkAddrs)
+  }, [chainId]);
 
 
   useEffect(() => {
