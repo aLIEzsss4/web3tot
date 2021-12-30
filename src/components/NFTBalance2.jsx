@@ -346,7 +346,7 @@ function NFTBalance() {
               </div> */}
               < Meta title={
                 <>
-                  <p style={{ color: '#666', }}>{`#${nft.token_id}`}
+                  <p style={{ color: '#666', display: 'flex', alignItems: 'center' }}>{`#${nft.token_id}`}
                     <Tooltip title="View On Blockexplorer">
                       <FileSearchOutlined
                         style={{ marginLeft: 5 }}

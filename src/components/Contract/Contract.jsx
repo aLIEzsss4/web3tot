@@ -25,7 +25,7 @@ export default function Contract() {
 
   const openNotification = ({ message, description }) => {
     notification.open({
-      placement: "bottomRight",
+      placement: "topRight",
       message,
       description,
       onClick: () => {

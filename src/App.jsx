@@ -86,10 +86,14 @@ const App = ({ isServerInfo, REACT_APP_WORKNET }) => {
         }}
         collapsible collapsed={collapsed}
         onCollapse={(flag) => setCollapsed(flag)}
-        collapsedWidth={80}
+        collapsedWidth={60}
       >
-        <Logo />
-        {account && <MenuItems ISTESTNET={ISTESTNET} collapsed={collapsed} />}
+        <div style={{
+          marginLeft: collapsed?'-16px':'0'
+        }}>
+          <Logo />
+        </div>
+        {account && !collapsed&& <MenuItems ISTESTNET={ISTESTNET} collapsed={collapsed} />}
         {/* {!account && !collapsed && ISTESTNET && <AddNetwork />} */}
         {!collapsed &&
           (
@@ -106,11 +110,8 @@ const App = ({ isServerInfo, REACT_APP_WORKNET }) => {
             >
               <Chains />  
               <Account />
-            <NativeBalance chainId={chainId}/>
-              {
-              ISTESTNET && <a href={faucetUrl} target="_blank" rel="noreferrer">Get Free {currencySymbol}</a>
-              }
-
+              {account&&<NativeBalance chainId={chainId}/>}
+              {ISTESTNET && <a href={faucetUrl} target="_blank" rel="noreferrer">Get Free {currencySymbol}</a>}
             </div>
           )}
       </Sider>
