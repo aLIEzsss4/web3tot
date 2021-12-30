@@ -17,9 +17,16 @@ import store from '../stores'
 import { setConnected } from '../stores/UserStore'
 import { setFocused, setShowChat } from '../stores/ChatStore'
 
+interface moveKeysType {
+  W: Phaser.Input.Keyboard.Key;
+  S: Phaser.Input.Keyboard.Key;
+  A: Phaser.Input.Keyboard.Key;
+  D: Phaser.Input.Keyboard.Key;
+}
+
 export default class Game extends Phaser.Scene {
   network!: Network
-  private cursors!: Phaser.Types.Input.Keyboard.CursorKeys
+  private cursors!: Phaser.Types.Input.Keyboard.CursorKeys | moveKeysType
   private keyE!: Phaser.Input.Keyboard.Key
   private keyR!: Phaser.Input.Keyboard.Key
   private map!: Phaser.Tilemaps.Tilemap
@@ -35,14 +42,21 @@ export default class Game extends Phaser.Scene {
   }
 
   registerKeys() {
-    this.cursors = this.input.keyboard.createCursorKeys()
+    this.cursors ={
+      ...this.input.keyboard.createCursorKeys(),
+      ...this.input.keyboard.addKeys('W,S,A,D')
+    } 
+    // this.moveKeys = ;
+    // this.cursors =  this.input.keyboard.addCapture('W,S,A,D');
+    console.log(this.cursors, 'cursors', )
     // maybe we can have a dedicated method for adding keys if more keys are needed in the future
     this.keyE = this.input.keyboard.addKey('E')
     this.keyR = this.input.keyboard.addKey('R')
+   
     this.input.keyboard.disableGlobalCapture()
     this.input.keyboard.on('keydown-ENTER', (event) => {
       store.dispatch(setShowChat(true))
-      store.dispatch(setFocused(true))
+      // store.dispatch(setFocused(true))
     })
     this.input.keyboard.on('keydown-ESC', (event) => {
       store.dispatch(setShowChat(false))

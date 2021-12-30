@@ -10,6 +10,13 @@ import store from '../stores'
 import { openComputerDialog } from '../stores/ComputerStore'
 import { pushPlayerJoinedMessage } from '../stores/ChatStore'
 
+interface moveKeysType{
+  W: Phaser.Input.Keyboard.Key;
+  S: Phaser.Input.Keyboard.Key;
+  A: Phaser.Input.Keyboard.Key;
+  D: Phaser.Input.Keyboard.Key;
+}
+
 export default class MyPlayer extends Player {
   private playContainerBody: Phaser.Physics.Arcade.Body
   private itemOnSit?: Item
@@ -39,7 +46,7 @@ export default class MyPlayer extends Player {
 
   update(
     playerSelector: PlayerSelector,
-    cursors: Phaser.Types.Input.Keyboard.CursorKeys,
+    cursors:any,
     keyE: Phaser.Input.Keyboard.Key,
     keyR: Phaser.Input.Keyboard.Key,
     network: Network
@@ -101,13 +108,13 @@ export default class MyPlayer extends Player {
         const speed = 200
         let vx = 0
         let vy = 0
-        if (cursors.left?.isDown) vx -= speed
-        if (cursors.right?.isDown) vx += speed
-        if (cursors.up?.isDown) {
+        if (cursors.left?.isDown || cursors.A?.isDown) vx -= speed
+        if (cursors.right?.isDown || cursors.D?.isDown) vx += speed
+        if (cursors.up?.isDown || cursors.W?.isDown) {
           vy -= speed
           this.setDepth(this.y) //change player.depth if player.y changes
         }
-        if (cursors.down?.isDown) {
+        if (cursors.down?.isDown || cursors.S?.isDown) {
           vy += speed
           this.setDepth(this.y) //change player.depth if player.y changes
         }

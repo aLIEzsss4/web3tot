@@ -136,7 +136,7 @@ const getColorByName = (author: string) => {
 }
 
 const dateFormatter = new Intl.DateTimeFormat('en', {
-  timeStyle: 'short',
+  timeStyle: 'medium',
   dateStyle: 'short',
 })
 
