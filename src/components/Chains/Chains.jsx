@@ -28,11 +28,11 @@ const chainMap = {
       value: "Smart Chain",
       icon: <BSCLogo />,
     },
-  {
-    key: "0x89",
-    value: "Polygon",
-    icon: <PolygonLogo />,
-  },
+    {
+      key: "0x89",
+      value: "Polygon",
+      icon: <PolygonLogo />,
+    },
   ],
   'TESTNET': [
     {
@@ -45,18 +45,15 @@ const chainMap = {
       value: "Smart Chain Testnet",
       icon: <BSCLogo />,
     },
-  {
-    key: "0x13881",
-    value: "Mumbai",
-    icon: <PolygonLogo />,
-  },]
+    {
+      key: "0x13881",
+      value: "Mumbai",
+      icon: <PolygonLogo />,
+    },]
 }[process.env.REACT_APP_WORKNET]
-console.log(process.env.REACT_APP_WORKNET,'REACT_APP_WORKNET')
+console.log(process.env.REACT_APP_WORKNET, 'REACT_APP_WORKNET')
 
 const menuItems = chainMap
-
-
-
 
 function Chains() {
 

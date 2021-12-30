@@ -13,11 +13,6 @@ export const networkCollections = {
       ItemImagesList: 'ItemImages',
       MarketItemsList: 'MarketItems'
     },
-    // {
-    //   image: "https://ipfs.moralis.io:2053/ipfs/QmfLbpeVHxReWKNLaXTPcWiafi49eoAL4gRwMGuXtx2Eqe/images/14.png",
-    //   name: "Pixel Show",
-    //   addrs: "0xCA34404dD8Bd6537BE76F3A51B379F8949bD7973",
-    // },
   ],
   "0x38": [
     //Smart Chain
@@ -29,14 +24,8 @@ export const networkCollections = {
       ItemImagesList: 'ItemImages',
       MarketItemsList: 'MarketItems'
     },
-    // {
-    //   image: "https://ipfs.moralis.io:2053/ipfs/QmfLbpeVHxReWKNLaXTPcWiafi49eoAL4gRwMGuXtx2Eqe/images/14.png",
-    //   name: "Pixel Show",
-    //   addrs: "0xCA34404dD8Bd6537BE76F3A51B379F8949bD7973",
-    // },
   ],
   "0x13881": [
-
     //mumbai
     {
       image:
@@ -47,12 +36,17 @@ export const networkCollections = {
       ItemImagesList: 'MumbaiItemImages',
       MarketItemsList: 'MumbaiMarketItems'
     },
-    // {
-    //   image:
-    //     "https://ipfs.moralis.io:2053/ipfs/QmfLbpeVHxReWKNLaXTPcWiafi49eoAL4gRwMGuXtx2Eqe/images/14.png",
-    //   name: "Pixel Show",
-    //   addrs: "0xCA34404dD8Bd6537BE76F3A51B379F8949bD7973",
-    // },
+  ],
+  "0x4": [
+    //rinkeby
+    {
+      image: "https://lh3.googleusercontent.com/BWCni9INm--eqCK800BbRkL10zGyflxfPwTHt4XphMSWG3XZvPx1JyGdfU9vSor8K046DJg-Q8Y4ioUlWHiCZqgR_L00w4vcbA-w=s0",
+      name: "NFTOT",
+      nftAddrs: '0x61480dDa3d997837812F3c600E851BE99485A6C5',
+      markAddrs: '0x1b8abD1b770FAB93e0851DD3cC77c829c5274077',
+      ItemImagesList: 'RinkebyItemImages',
+      MarketItemsList: 'RinkebyMarketItems'
+    },
   ],
 
   "0x1": [

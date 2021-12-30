@@ -14,7 +14,7 @@ export const networkConfigs = {
     currencySymbol: "ETH",
     blockExplorerUrl: "https://rinkeby.etherscan.io/",
     faucet:'https://faucets.chain.link/rinkeby',
-    // blockExplorerUrl: "https://kovan.etherscan.io/",
+    nftView: 'https://testnets.opensea.io/assets/rinkeby/',
     logo: 'ETHLogo'
   },
   "0x2a": {

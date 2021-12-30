@@ -10,7 +10,8 @@ import {
   Modal
 } from 'antd';
 import { useWeb3Contract } from "hooks/useWeb3Contract";
-import abi from "contracts/CreatNFT.json";
+// import abi from "contracts/CreatNFT.json";
+import abi from "contracts/ToTfun.json";
 import { getCollectionsByChain } from "helpers/collections";
 
 import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
@@ -28,10 +29,10 @@ import { useIPFS } from 'hooks/useIPFS';
 const { Option } = Select;
 const formItemLayout = {
   labelCol: {
-    span: 6,
+    span: 8,
   },
   wrapperCol: {
-    span: 14,
+    span: 12,
   },
 };
 
@@ -112,7 +113,7 @@ const CreatNFT = () => {
     functionName: "mintToken",
     contractAddress: contractAddress,
     params: {
-      tokenURI: metadataURI,
+      uri: metadataURI,
     },
   });
 
@@ -250,7 +251,7 @@ const CreatNFT = () => {
         <Form.Item
           wrapperCol={{
             span: 12,
-            offset: 6,
+            offset: 8,
           }}
         >
           <Button loading={isUploading || isLoading || isRunning} type="primary" htmlType="submit">

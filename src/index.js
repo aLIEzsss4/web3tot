@@ -12,8 +12,6 @@ import {
 import './console'
 
 
-
-
 /** Get your free Moralis Account https://moralis.io/ */
 
 const APP_ID = process.env.REACT_APP_MORALIS_APPLICATION_ID;
