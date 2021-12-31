@@ -51,7 +51,6 @@ const chainMap = {
       icon: <PolygonLogo />,
     },]
 }[process.env.REACT_APP_WORKNET]
-console.log(process.env.REACT_APP_WORKNET, 'REACT_APP_WORKNET')
 
 const menuItems = chainMap
 

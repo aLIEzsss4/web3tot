@@ -111,7 +111,8 @@ const App = ({ isServerInfo, REACT_APP_WORKNET }) => {
               <Chains />  
               <Account />
               {account&&<NativeBalance chainId={chainId}/>}
-              {ISTESTNET && <a href={faucetUrl} target="_blank" rel="noreferrer">Get Free {currencySymbol}</a>}
+            {ISTESTNET && account &&<a href={faucetUrl} target="_blank" rel="noreferrer">Get Free {currencySymbol}</a>}
+            {!account && <a href="https://metamask.io/" target="_blank" rel="noreferrer">Install Metamask</a>}
             </div>
           )}
       </Sider>

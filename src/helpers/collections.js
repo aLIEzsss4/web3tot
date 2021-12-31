@@ -1,6 +1,5 @@
 const local = process.env.REACT_APP_LOCALTEST === 'TRUE';
-console.log('process.env',
-  process.env, local)
+
 
 export const networkCollections = {
   "0x61": [

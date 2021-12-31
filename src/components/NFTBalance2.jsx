@@ -23,6 +23,7 @@ const styles = {
     margin: "0 auto",
     maxWidth: "1180px",
     gap: "20px",
+    marginTop:"20px"
   },
   buy: {
     position: 'absolute',
