@@ -16,6 +16,7 @@ import NFTBalance from 'components/NFTBalance2'
 import ERC20Balance from 'components/ERC20Balance'
 import NFTMarketTransactions from 'components/NFTMarketTransactions'
 import Mint from 'components/Mint';
+import KeyBoardTips from 'components/KeyboardTips'
 
 import { setOpen as setOpenNFTBalance } from 'stores/NFTBalanceStore'
 import { setOpen as setOpenBalance } from 'stores/BanlanceStore'
@@ -49,7 +50,7 @@ const GameRef = () => {
 
   return (
     <ThemeProvider theme={muiTheme} >
-      {/* <ModalRef /> */}
+      <KeyBoardTips />
       <GameAPP />
       {openBalance && (
         <Dialog modal title={'Balance'} close={closeBalance}>

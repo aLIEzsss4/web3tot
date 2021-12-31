@@ -45,7 +45,7 @@ function NFTBalance() {
   const listItemFunction = "createMarketItem";
 
   const collections = getCollectionsByChain(chainId)
-  const { ItemImagesList } = collections?.[0] || { ItemImagesList: ''}
+  const { ItemImagesList='' } = collections?.[0] || { ItemImagesList: ''}
   const ItemImage = Moralis.Object.extend(ItemImagesList);
 
   useEffect(() => {

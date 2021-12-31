@@ -79,9 +79,9 @@ function NFTTokenIds() {
     useMoralisDapp();
 
   const collections = getCollectionsByChain(chainId)
-  const { MarketItemsList, nftAddrs } = collections?.[0] || { MarketItemsList: '', nftAddrs: '' }
+  const { MarketItemsList='', nftAddrs='' } = collections?.[0] || { MarketItemsList: '', nftAddrs: '' }
 
-  // console.log(collections, chainId,)
+  console.log(MarketItemsList,'MarketItemsList')
   // 
   const { NFTTokenIds, totalNFTs, fetchSuccess, isLoading, getNFTTokenIds } = useNFTTokenIds(nftAddrs);
 

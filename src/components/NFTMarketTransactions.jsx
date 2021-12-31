@@ -27,7 +27,7 @@ function NFTMarketTransactions() {
   }[getLogoByChain(chainId)]
 
   const collections = getCollectionsByChain(chainId)
-  const { MarketItemsList, ItemImagesList } = collections?.[0] || { MarketItemsList: '', ItemImagesList: '' }
+  const { MarketItemsList='', ItemImagesList='' } = collections?.[0] || { MarketItemsList: '', ItemImagesList: '' }
 
   const queryItemImages = useMoralisQuery(ItemImagesList);
   const fetchItemImages = JSON.parse(
