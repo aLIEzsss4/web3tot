@@ -8,21 +8,32 @@ export const networkCollections = {
     {
       image: "https://lh3.googleusercontent.com/BWCni9INm--eqCK800BbRkL10zGyflxfPwTHt4XphMSWG3XZvPx1JyGdfU9vSor8K046DJg-Q8Y4ioUlWHiCZqgR_L00w4vcbA-w=s0",
       name: "NFTOT",
-      nftAddrs: local ? "0x975404f84305aFF41C29B60f71ae29066Ccfc592" : "0x90dEE6E7C740376bB0320c026F006F8701ECDE13",
-      markAddrs: local ? "0x458a45D0b526a7B70704e1064F4CDa2d525B87f8" : "0x0Fe264929a9A2010A987856fE254a2628054dA0f",
+      nftAddrs: local ? "0x975404f84305aFF41C29B60f71ae29066Ccfc592" : "0x11e8BcB66Fb1546fF18534DD6De2A0cE0e6bC3EC",
+      markAddrs: local ? "0x458a45D0b526a7B70704e1064F4CDa2d525B87f8" : "0x25A500FD0E6aC8b98c74D7b5092BEb9bd487F787",
       ItemImagesList: 'ItemImages',
       MarketItemsList: 'MarketItems'
     },
   ],
   "0x38": [
-    //Smart Chain
+    //Smart Chain main
     {
       image: "https://lh3.googleusercontent.com/BWCni9INm--eqCK800BbRkL10zGyflxfPwTHt4XphMSWG3XZvPx1JyGdfU9vSor8K046DJg-Q8Y4ioUlWHiCZqgR_L00w4vcbA-w=s0",
       name: "NFTOT",
-      nftAddrs: "0xd0267Ad5425F5A99Fd6614a789AA4EC98a771811",
+      nftAddrs: local ? "0xd0267Ad5425F5A99Fd6614a789AA4EC98a771811" : '0xfdE7c19BfDEc25B815EB101A201fC6a1e4Fd872E',
       markAddrs: "0x804389f405A254eCC180CC183C6c98701195A0bC",
       ItemImagesList: 'ItemImages',
       MarketItemsList: 'MarketItems'
+    },
+  ],
+  "0x89": [
+    //Polygon main
+    {
+      image: "https://lh3.googleusercontent.com/BWCni9INm--eqCK800BbRkL10zGyflxfPwTHt4XphMSWG3XZvPx1JyGdfU9vSor8K046DJg-Q8Y4ioUlWHiCZqgR_L00w4vcbA-w=s0",
+      name: "NFTOT",
+      nftAddrs: '0x804389f405A254eCC180CC183C6c98701195A0bC',
+      markAddrs: '0xd0267Ad5425F5A99Fd6614a789AA4EC98a771811',
+      ItemImagesList: 'PolygonItemImages',
+      MarketItemsList: 'PolygonMarketItems'
     },
   ],
   "0x13881": [
@@ -31,8 +42,8 @@ export const networkCollections = {
       image:
         "https://lh3.googleusercontent.com/BWCni9INm--eqCK800BbRkL10zGyflxfPwTHt4XphMSWG3XZvPx1JyGdfU9vSor8K046DJg-Q8Y4ioUlWHiCZqgR_L00w4vcbA-w=s0",
       name: "NFTOT",
-      nftAddrs: '0x9c0348d6df8f63429f192f810e19e4c3a7b9ee8c',
-      markAddrs: '0x094Db927d895f448a478d753898618534A0cD787',
+      nftAddrs: local ? '0x9c0348d6df8f63429f192f810e19e4c3a7b9ee8c' : '0x25A07B56F0D353545E3BBfd9bBF409c459809a4A',
+      markAddrs: local ? '0x094Db927d895f448a478d753898618534A0cD787' : '0xf87Afc3eAC88615e0202b7197875DeBDdA0fdb68',
       ItemImagesList: 'MumbaiItemImages',
       MarketItemsList: 'MumbaiMarketItems'
     },
@@ -42,8 +53,8 @@ export const networkCollections = {
     {
       image: "https://lh3.googleusercontent.com/BWCni9INm--eqCK800BbRkL10zGyflxfPwTHt4XphMSWG3XZvPx1JyGdfU9vSor8K046DJg-Q8Y4ioUlWHiCZqgR_L00w4vcbA-w=s0",
       name: "NFTOT",
-      nftAddrs: '0x61480dDa3d997837812F3c600E851BE99485A6C5',
-      markAddrs: '0x1b8abD1b770FAB93e0851DD3cC77c829c5274077',
+      nftAddrs: local ? '0x61480dDa3d997837812F3c600E851BE99485A6C5' : '0xc5050AE1eC9691E0232C6e02A7bce3B9890AC1eb',
+      markAddrs: local ? '0x1b8abD1b770FAB93e0851DD3cC77c829c5274077' : '0x7fF768a2ded3c1354C6F9213294171b1F231816e',
       ItemImagesList: 'RinkebyItemImages',
       MarketItemsList: 'RinkebyMarketItems'
     },

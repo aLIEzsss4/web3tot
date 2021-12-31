@@ -70,6 +70,7 @@ export const networkConfigs = {
     rpcUrl: "https://rpc-mainnet.maticvigil.com/",
     blockExplorerUrl: "https://explorer-mainnet.maticvigil.com/",
     wrapped: "0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270",
+    nftView: 'https://opensea.io/assets/matic/',
     logo: 'PolygonLogo'
   },
   "0x13881": {

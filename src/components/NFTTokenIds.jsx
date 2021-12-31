@@ -10,7 +10,6 @@ import { Card, Image, Tooltip, Modal, Badge, Alert, Spin, Rate } from "antd";
 import { useNFTTokenIds } from "hooks/useNFTTokenIds";
 import {
   FileSearchOutlined,
-
   LoadingOutlined
 } from "@ant-design/icons";
 import { useMoralisDapp } from "MoralisDappProvider/MoralisDappProvider";
@@ -81,8 +80,6 @@ function NFTTokenIds() {
   const collections = getCollectionsByChain(chainId)
   const { MarketItemsList='', nftAddrs='' } = collections?.[0] || { MarketItemsList: '', nftAddrs: '' }
 
-  console.log(MarketItemsList,'MarketItemsList')
-  // 
   const { NFTTokenIds, totalNFTs, fetchSuccess, isLoading, getNFTTokenIds } = useNFTTokenIds(nftAddrs);
 
   const nativeName = getNativeByChain(chainId);
