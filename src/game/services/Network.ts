@@ -20,7 +20,7 @@ export default class Network {
 
   constructor() {
     const protocol = window.location.protocol.replace('http', 'ws')
-    const endpoint = `ws://hm-wmp.colyseus.in`
+    const endpoint = `wss://hm-wmp.colyseus.in`
     // const endpoint = `ws://localhost:2567`
     // const endpoint = `wss://web3tot.herokuapp.com`
     // const endpoint =
