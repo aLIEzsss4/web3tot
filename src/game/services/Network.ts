@@ -20,7 +20,7 @@ export default class Network {
 
   constructor() {
     const protocol = window.location.protocol.replace('http', 'ws')
-    const endpoint = `wss://hm-wmp.colyseus.in`
+    const endpoint = process.env.NODE_ENV === 'production' ? `wss://hm-wmp.colyseus.in` : `ws://hm-wmp.colyseus.in`
     // const endpoint = `ws://localhost:2567`
     // const endpoint = `wss://web3tot.herokuapp.com`
     // const endpoint =

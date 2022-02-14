@@ -72,6 +72,19 @@ const App = ({ isServerInfo, REACT_APP_WORKNET }) => {
   
   const faucetUrl= getFaucetByChain(chainId)
   const currencySymbol = getNativeByChain(chainId)
+
+  const hasWorkNet = {
+    'MAINNET': {
+      "0x38":true,
+      "0x89":true,
+    },
+    'TESTNET':{
+      "0x4":true,
+      "0x61":true,
+      "0x13881":true,
+    }
+  }[process.env.REACT_APP_WORKNET][chainId]
+  console.log(hasWorkNet,'chainId')
   return (
     // <Router>
     <Layout style={{ height: "0", overflow: "auto" }} className="site-layout">
@@ -111,8 +124,8 @@ const App = ({ isServerInfo, REACT_APP_WORKNET }) => {
               <Chains />  
               <Account />
               {account&&<NativeBalance chainId={chainId}/>}
-            {ISTESTNET && account &&<a href={faucetUrl} target="_blank" rel="noreferrer">Get Free {currencySymbol}</a>}
-            {!account && <a href="https://metamask.io/" target="_blank" rel="noreferrer">Install Metamask</a>}
+            {hasWorkNet&&ISTESTNET && account &&<a href={faucetUrl} target="_blank" rel="noreferrer">Get Free {currencySymbol}</a>}
+              {!account && <a href="https://metamask.io/" target="_blank" rel="noreferrer">Install Metamask</a>}
             </div>
           )}
       </Sider>
