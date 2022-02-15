@@ -24,7 +24,7 @@ import { getExplorer } from "helpers/networks";
 
 
 
-import 'antd/dist/antd.variable.min.css';
+// import 'antd/dist/antd.variable.min.css';
 import { useIPFS } from 'hooks/useIPFS';
 const { Option } = Select;
 const formItemLayout = {
