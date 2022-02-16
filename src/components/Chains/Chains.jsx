@@ -40,11 +40,11 @@ const chainMap = {
       value: "Rinkeby Testnet",
       icon: <ETHLogo />,
     },
-    {
-      key: "0x61",
-      value: "Smart Chain Testnet",
-      icon: <BSCLogo />,
-    },
+    // {
+    //   key: "0x61",
+    //   value: "Smart Chain Testnet",
+    //   icon: <BSCLogo />,
+    // },
     {
       key: "0x13881",
       value: "Mumbai",
